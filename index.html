@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HostelCare AI — NLP-Powered Hostel Health & Safety Management System</title>
+    <meta name="description" content="AI-driven hostel health and safety platform with real-time NLP symptom assessment, emergency dispatch contacts, facility complaints tracking, and safety protocols.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- App Container -->
+    <div class="app-container">
+        
+        <!-- Left Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="brand-logo">
+                    <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="m9 12 2 2 4-4"/>
+                    </svg>
+                    <div class="brand-text">
+                        <h1 class="brand-title">HostelCare AI</h1>
+                        <span class="brand-tagline">Stay Healthy. Stay Safe.</span>
+                    </div>
+                </div>
+                <button class="mobile-close-btn" id="sidebar-close-btn" aria-label="Close Navigation">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#dashboard" class="nav-link active" id="nav-dashboard" data-section="dashboard">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#assistant" class="nav-link" id="nav-assistant" data-section="assistant">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+                            <span>Virtual Assistant</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#emergency" class="nav-link" id="nav-emergency" data-section="emergency">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5v6"/><path d="M9 8h6"/></svg>
+                            <span>Emergency Help</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#report" class="nav-link" id="nav-report" data-section="report">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            <span>Report an Issue</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#complaints" class="nav-link" id="nav-complaints" data-section="complaints">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                            <span>My Complaints</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#guide" class="nav-link" id="nav-guide" data-section="guide">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                            <span>Health & Safety Guide</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#admin" class="nav-link" id="nav-admin" data-section="admin">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            <span>Admin Dashboard</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="safety-badge">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <div class="safety-badge-text">
+                        <strong>Your Safety, Our Priority</strong>
+                        <span>Campus Health Protocol</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Workspace Area -->
+        <div class="main-wrapper">
+            
+            <!-- Top Mobile Bar -->
+            <div class="mobile-top-bar">
+                <button class="menu-toggle-btn" id="menu-toggle-btn" aria-label="Open Navigation Menu">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+                <div class="mobile-brand">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#124E4A" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <span>HostelCare AI</span>
+                </div>
+                <button class="mobile-chat-btn" id="mobile-chat-btn" aria-label="Open Chatbot">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </button>
+            </div>
+
+            <!-- Content Area Split: Dashboard Content + Persistent Chatbot -->
+            <div class="content-layout">
+                
+                <!-- Main Dashboard View Container -->
+                <main class="dashboard-main" id="main-content">
+                    
+                    <!-- Main Header Banner -->
+                    <header class="dashboard-header">
+                        <div class="header-text-block">
+                            <div class="header-date-badge" id="current-date-badge">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                <span id="current-date-text">Loading date...</span>
+                            </div>
+                            <h2 class="header-headline">Your Health. Your Safety. Our Priority.</h2>
+                            <p class="header-subtext">NLP-powered hostel health triage, emergency transport routing, and verified facility complaint management.</p>
+                        </div>
+                        <div class="header-illustration-block" aria-hidden="true">
+                            <!-- Clean architectural campus hostel SVG illustration (NO flowers) -->
+                            <svg class="campus-svg" viewBox="0 0 280 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="132" width="280" height="8" rx="4" fill="#DDEFE9"/>
+                                <!-- Building 1 (Campus Dispensary / Health Center) -->
+                                <rect x="20" y="55" width="70" height="77" rx="3" fill="#FFFFFF" stroke="#124E4A" stroke-width="2.5"/>
+                                <rect x="25" y="65" width="16" height="14" rx="1.5" fill="#DDEFE9"/>
+                                <rect x="47" y="65" width="16" height="14" rx="1.5" fill="#DDEFE9"/>
+                                <rect x="69" y="65" width="16" height="14" rx="1.5" fill="#DDEFE9"/>
+                                <rect x="25" y="87" width="16" height="14" rx="1.5" fill="#DDEFE9"/>
+                                <rect x="47" y="87" width="16" height="14" rx="1.5" fill="#DDEFE9"/>
+                                <rect x="69" y="87" width="16" height="14" rx="1.5" fill="#DDEFE9"/>
+                                <rect x="48" y="110" width="14" height="22" fill="#124E4A"/>
+                                <!-- Medical Cross on Dispensary -->
+                                <circle cx="55" cy="42" r="10" fill="#23865B"/>
+                                <path d="M55 37v10M50 42h10" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+                                
+                                <!-- Building 2 (Hostel Residential Block A) -->
+                                <rect x="100" y="30" width="105" height="102" rx="3" fill="#FFFFFF" stroke="#124E4A" stroke-width="2.5"/>
+                                <!-- Windows grid -->
+                                <rect x="110" y="42" width="14" height="13" rx="1.5" fill="#ECEAF8"/>
+                                <rect x="132" y="42" width="14" height="13" rx="1.5" fill="#ECEAF8"/>
+                                <rect x="154" y="42" width="14" height="13" rx="1.5" fill="#ECEAF8"/>
+                                <rect x="176" y="42" width="14" height="13" rx="1.5" fill="#ECEAF8"/>
+                                <rect x="110" y="62" width="14" height="13" rx="1.5" fill="#ECEAF8"/>
+                                <rect x="132" y="62" width="14" height="13" rx="1.5" fill="#ECEAF8"/>
+                                <rect x="154" y="62" width="14" height="13" rx="1.5" fill="#ECEAF8"/>
+                                <rect x="176" y="62" width="14" height="13" rx="1.5" fill="#ECEAF8"/>
+                                <rect x="110" y="82" width="14" height="13" rx="1.5" fill="#ECEAF8"/>
+                                <rect x="132" y="82" width="14" height="13" rx="1.5" fill="#ECEAF8"/>
+                                <rect x="154" y="82" width="14" height="13" rx="1.5" fill="#ECEAF8"/>
+                                <rect x="176" y="82" width="14" height="13" rx="1.5" fill="#ECEAF8"/>
+                                <rect x="142" y="105" width="20" height="27" fill="#124E4A"/>
+
+                                <!-- Building 3 (Hostel Residential Block B) -->
+                                <rect x="215" y="48" width="55" height="84" rx="3" fill="#FFFFFF" stroke="#124E4A" stroke-width="2.5"/>
+                                <rect x="225" y="58" width="14" height="13" rx="1.5" fill="#F8E5DD"/>
+                                <rect x="247" y="58" width="14" height="13" rx="1.5" fill="#F8E5DD"/>
+                                <rect x="225" y="78" width="14" height="13" rx="1.5" fill="#F8E5DD"/>
+                                <rect x="247" y="78" width="14" height="13" rx="1.5" fill="#F8E5DD"/>
+                                <rect x="235" y="105" width="15" height="27" fill="#124E4A"/>
+
+                                <!-- Campus Light Post -->
+                                <line x1="95" y1="80" x2="95" y2="132" stroke="#64716F" stroke-width="2"/>
+                                <circle cx="95" cy="78" r="4" fill="#D99A28"/>
+                            </svg>
+                        </div>
+                    </header>
+
+                    <!-- Quick Action Cards (4 horizontal pastel cards) -->
+                    <section class="quick-actions-section" aria-label="Quick Actions">
+                        <div class="quick-actions-grid">
+                            
+                            <div class="action-card card-lavender" id="action-assistant-card" tabindex="0" role="button">
+                                <div class="action-icon-wrap icon-purple">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/></svg>
+                                </div>
+                                <div class="action-text">
+                                    <span class="action-title">Health Assistant</span>
+                                    <p class="action-desc">Ask a health question</p>
+                                </div>
+                                <svg class="action-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                            </div>
+
+                            <div class="action-card card-peach" id="action-emergency-card" tabindex="0" role="button">
+                                <div class="action-icon-wrap icon-red">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5v6"/><path d="M9 8h6"/></svg>
+                                </div>
+                                <div class="action-text">
+                                    <span class="action-title">Emergency Help</span>
+                                    <p class="action-desc">Get urgent support</p>
+                                </div>
+                                <svg class="action-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                            </div>
+
+                            <div class="action-card card-sage" id="action-report-card" tabindex="0" role="button">
+                                <div class="action-icon-wrap icon-green">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                </div>
+                                <div class="action-text">
+                                    <span class="action-title">Report an Issue</span>
+                                    <p class="action-desc">Report a hostel concern</p>
+                                </div>
+                                <svg class="action-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                            </div>
+
+                            <div class="action-card card-teal" id="action-guide-card" tabindex="0" role="button">
+                                <div class="action-icon-wrap icon-teal">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                                </div>
+                                <div class="action-text">
+                                    <span class="action-title">Safety Guide</span>
+                                    <p class="action-desc">Learn how to stay safe</p>
+                                </div>
+                                <svg class="action-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- Quick Overview Metrics (Real backend data) -->
+                    <section class="overview-section" aria-label="Platform Overview">
+                        <div class="section-title-row">
+                            <h3 class="section-title">Quick Overview</h3>
+                            <button class="text-btn" id="refresh-stats-btn" title="Refresh Live Statistics">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21h5v-5"/></svg>
+                                <span>Live Metrics</span>
+                            </button>
+                        </div>
+                        <div class="metrics-grid">
+                            
+                            <div class="metric-card">
+                                <div class="metric-header">
+                                    <span class="metric-label">Health & Safety Resources</span>
+                                    <div class="metric-badge badge-teal">Verified</div>
+                                </div>
+                                <div class="metric-value-row">
+                                    <span class="metric-value" id="stat-resources">17</span>
+                                    <svg class="metric-sub-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#124E4A" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>
+                                </div>
+                                <span class="metric-footer">Guides & clinical FAQ protocols</span>
+                            </div>
+
+                            <div class="metric-card">
+                                <div class="metric-header">
+                                    <span class="metric-label">Pending Complaints</span>
+                                    <div class="metric-badge badge-amber">Active</div>
+                                </div>
+                                <div class="metric-value-row">
+                                    <span class="metric-value" id="stat-pending">0</span>
+                                    <svg class="metric-sub-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#D99A28" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                </div>
+                                <span class="metric-footer">Under warden & staff review</span>
+                            </div>
+
+                            <div class="metric-card">
+                                <div class="metric-header">
+                                    <span class="metric-label">Resolved Complaints</span>
+                                    <div class="metric-badge badge-green">Closed</div>
+                                </div>
+                                <div class="metric-value-row">
+                                    <span class="metric-value" id="stat-resolved">0</span>
+                                    <svg class="metric-sub-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#23865B" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                </div>
+                                <span class="metric-footer">Successfully rectified issues</span>
+                            </div>
+
+                            <div class="metric-card">
+                                <div class="metric-header">
+                                    <span class="metric-label">Open Safety Reports</span>
+                                    <div class="metric-badge badge-peach">Water / Electric</div>
+                                </div>
+                                <div class="metric-value-row">
+                                    <span class="metric-value" id="stat-safety">0</span>
+                                    <svg class="metric-sub-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#C83D45" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                </div>
+                                <span class="metric-footer">High-priority facilities tracked</span>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- Exact Emergency Contacts Section (Section 6) -->
+                    <section class="emergency-section" id="emergency-section" aria-label="Emergency Contacts">
+                        <div class="section-title-row">
+                            <div>
+                                <h3 class="section-title">Emergency Contacts</h3>
+                                <p class="section-subtitle">Verified transport and medical contacts. Tap any card to dial immediately.</p>
+                            </div>
+                            <span class="emergency-badge">Emergency Direct Line</span>
+                        </div>
+                        
+                        <div class="emergency-cards-grid">
+                            
+                            <!-- 1. Ambulance Card -->
+                            <div class="emergency-card ambulance-card" id="card-ambulance">
+                                <div class="emergency-card-top">
+                                    <div class="emergency-icon-box ambulance-icon-box">
+                                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#C83D45" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                                    </div>
+                                    <div class="emergency-priority-tag">Medical Priority</div>
+                                </div>
+                                <div class="emergency-card-body">
+                                    <h4 class="emergency-name">Ambulance</h4>
+                                    <div class="emergency-phone">108</div>
+                                    <p class="emergency-desc">Medical emergency assistance</p>
+                                </div>
+                                <div class="emergency-card-actions">
+                                    <a href="tel:108" class="emergency-call-btn call-ambulance-btn" id="call-ambulance-btn">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                        <span>Call 108</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- 2. Local Auto Card -->
+                            <div class="emergency-card transport-card" id="card-auto">
+                                <div class="emergency-card-top">
+                                    <div class="emergency-icon-box auto-icon-box">
+                                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#124E4A" stroke-width="2"><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/><path d="M4 18h1m4 0h6m4 0h1"/><path d="M5 12V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5"/><path d="M3 14h18v4H3z"/></svg>
+                                    </div>
+                                    <div class="emergency-transport-tag">Local Contact</div>
+                                </div>
+                                <div class="emergency-card-body">
+                                    <h4 class="emergency-name">Local Auto</h4>
+                                    <div class="emergency-phone">+91 6379878266</div>
+                                    <p class="emergency-desc">Local auto contact</p>
+                                </div>
+                                <div class="emergency-card-actions">
+                                    <a href="tel:+916379878266" class="emergency-call-btn call-transport-btn" id="call-auto-btn">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                        <span>Call Auto</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- 3. City Cab Card -->
+                            <div class="emergency-card transport-card" id="card-cab">
+                                <div class="emergency-card-top">
+                                    <div class="emergency-icon-box cab-icon-box">
+                                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#124E4A" stroke-width="2"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H7.5a1 1 0 0 0-.8.4L4 11l-5.16.86A1 1 0 0 0-2 12.85V16h3"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>
+                                    </div>
+                                    <div class="emergency-transport-tag">Local Contact</div>
+                                </div>
+                                <div class="emergency-card-body">
+                                    <h4 class="emergency-name">City Cab</h4>
+                                    <div class="emergency-phone">+91 82488 64404</div>
+                                    <p class="emergency-desc">Local cab contact</p>
+                                </div>
+                                <div class="emergency-card-actions">
+                                    <a href="tel:+918248864404" class="emergency-call-btn call-transport-btn" id="call-cab-btn">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                        <span>Call Cab</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- Dual Section: Health & Safety Tips Card + Professional Safety Banner (NO FLOWERS) -->
+                    <div class="split-info-row">
+                        
+                        <!-- Health & Safety Tips Card (Replaces flower photo completely) -->
+                        <div class="tip-card" id="tip-card">
+                            <div class="tip-card-header">
+                                <div class="tip-header-left">
+                                    <div class="tip-icon-box">
+                                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#124E4A" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="tip-card-title">Health & Safety Tip</h4>
+                                        <span class="tip-card-subtitle" id="tip-category-label">Drinking Water Safety</span>
+                                    </div>
+                                </div>
+                                <div class="tip-nav-buttons">
+                                    <button class="tip-nav-btn" id="tip-prev-btn" aria-label="Previous Tip">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                                    </button>
+                                    <button class="tip-nav-btn" id="tip-next-btn" aria-label="Next Tip">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="tip-content-body">
+                                <h5 class="tip-headline" id="tip-headline">Stay Hydrated with Clean RO Water</h5>
+                                <p class="tip-paragraph" id="tip-paragraph">Drink at least 2.5–3 liters of verified filtered water daily. Inspect the dispenser maintenance tag and never consume discolored or foul-tasting water.</p>
+                            </div>
+
+                            <div class="tip-card-footer">
+                                <button class="btn-secondary-sm" id="view-guide-btn">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                                    <span>View Complete Guide</span>
+                                </button>
+                                <span class="tip-indicator" id="tip-index-label">Tip 1 of 5</span>
+                            </div>
+                        </div>
+
+                        <!-- Professional Safety Banner (Replaces decorative flower banner) -->
+                        <div class="safety-banner" id="safety-banner">
+                            <div class="safety-banner-decoration" aria-hidden="true">
+                                <svg width="140" height="140" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <div class="safety-banner-content">
+                                <div class="safety-banner-icon-badge">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FFFFFF" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                                </div>
+                                <h4 class="safety-banner-title">Your Safety Matters</h4>
+                                <p class="safety-banner-text">Access reliable health triage, immediate emergency dispatch contacts, and verified hostel sanitation reporting in one place.</p>
+                                <div class="safety-banner-actions">
+                                    <button class="btn-banner-primary" id="banner-report-btn">Report a Hazard</button>
+                                    <button class="btn-banner-outline" id="banner-contacts-btn">View Contacts</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- My Complaints Preview Section -->
+                    <section class="complaints-preview-section" id="complaints-preview-section">
+                        <div class="section-title-row">
+                            <div>
+                                <h3 class="section-title">My Complaints</h3>
+                                <p class="section-subtitle">Real-time status of reported hostel health, hygiene, and facility issues.</p>
+                            </div>
+                            <div class="complaints-actions-row">
+                                <button class="btn-secondary-sm" id="track-modal-btn">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                                    <span>Track by PIN</span>
+                                </button>
+                                <button class="btn-primary-sm" id="open-report-form-btn">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                    <span>Report New Issue</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Complaints Table Container -->
+                        <div class="complaints-table-card">
+                            <div class="table-responsive">
+                                <table class="complaints-table" id="complaints-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Complaint ID</th>
+                                            <th>Category</th>
+                                            <th>Location</th>
+                                            <th>Status</th>
+                                            <th>Submitted</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="complaints-table-body">
+                                        <!-- Dynamically loaded from /api/complaints/recent -->
+                                        <tr>
+                                            <td colspan="6" class="table-loading-cell">Loading complaint records...</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
+                </main>
+
+                <!-- Persistent Chatbot Panel on Desktop Dashboard -->
+                <aside class="chatbot-panel" id="chatbot-panel">
+                    <div class="chat-panel-container">
+                        
+                        <!-- Chatbot Header -->
+                        <div class="chat-panel-header">
+                            <div class="chat-avatar-wrapper">
+                                <img id="doctor-img" src="assets/doctor_normal.png" alt="HostelCare Medical Assistant" class="chat-doctor-avatar">
+                                <span class="status-indicator-dot online" id="chat-online-dot"></span>
+                            </div>
+                            <div class="chat-header-info">
+                                <h3 class="chat-assistant-name">HostelCare Assistant</h3>
+                                <div class="chat-status-text">
+                                    <span class="status-text-label" id="chat-status-label">Online & Ready</span>
+                                </div>
+                            </div>
+                            <div class="chat-header-actions">
+                                <button class="chat-action-icon-btn" id="chat-reset-btn" title="Start New Conversation">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                                </button>
+                                <button class="chat-action-icon-btn mobile-chat-close-btn" id="chat-close-mobile-btn" title="Close Chatbot">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Chat Messages Container -->
+                        <div class="chat-messages-container" id="chat-messages" role="log" aria-live="polite">
+                            <!-- Welcome Bot Message -->
+                            <div class="message-row bot-row">
+                                <div class="message-bubble bot-bubble">
+                                    <p>Hello! I am your <strong>HostelCare Virtual Health & Safety Assistant</strong>. How can I help you today?</p>
+                                    <p class="bubble-sub">You can describe your symptoms, ask about first aid, get emergency transportation, or report a facility issue.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Suggested Question Chips -->
+                        <div class="chat-suggestions-container" id="chat-suggestions">
+                            <span class="suggestions-label">Suggested:</span>
+                            <div class="suggestions-scroll" id="suggestions-scroll">
+                                <button class="chip-btn" data-query="I have a fever and chills">🌡️ Fever & Chills</button>
+                                <button class="chip-btn" data-query="Drinking water in dispenser smells bad">💧 Water Quality</button>
+                                <button class="chip-btn" data-query="Who do I call in an emergency?">🚑 Emergency Contacts</button>
+                                <button class="chip-btn" data-query="Found insect in mess food">🍲 Food Hygiene</button>
+                                <button class="chip-btn" data-query="First aid for sprained ankle">🩹 First Aid</button>
+                            </div>
+                        </div>
+
+                        <!-- Chat Input Area -->
+                        <div class="chat-input-wrapper">
+                            <form id="chat-form" class="chat-form" onsubmit="return false;">
+                                <input type="text" id="user-input" class="chat-input" placeholder="Describe symptoms or ask a safety query..." autocomplete="off">
+                                <button type="submit" id="send-btn" class="chat-send-btn" aria-label="Send Message">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="22" y1="2" x2="11" y2="13"/>
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                                    </svg>
+                                </button>
+                            </form>
+                            <p class="chat-disclaimer">HostelCare AI provides general campus health guidance. In emergencies, call <strong>108</strong> or inform the warden immediately.</p>
+                        </div>
+
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 1: Report an Issue Modal -->
+    <div class="modal-backdrop" id="report-modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <div class="modal-title-icon icon-green">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="modal-title">Report a Hostel Concern</h3>
+                        <p class="modal-subtitle">Submit facility, sanitation, or safety issues for administration action.</p>
+                    </div>
+                </div>
+                <button class="modal-close-btn" id="close-report-modal-btn" aria-label="Close Modal">&times;</button>
+            </div>
+            
+            <form id="complaint-form" class="modal-form">
+                <div class="form-group">
+                    <label for="complaint-category">Issue Category <span class="required">*</span></label>
+                    <select id="complaint-category" required>
+                        <option value="">Select Category...</option>
+                        <option value="Drinking Water">Drinking Water (Quality / Filter / Cooler)</option>
+                        <option value="Food Hygiene">Food Hygiene (Mess / Dining / Utensils)</option>
+                        <option value="Washrooms & Sanitation">Washrooms & Sanitation (Cleanliness / Plumbing)</option>
+                        <option value="Waste Disposal">Waste Disposal (Garbage bins / Corridors)</option>
+                        <option value="Pest Control">Pest Control (Insects / Rodents)</option>
+                        <option value="Electrical & Fire Safety">Electrical & Fire Safety (Sockets / Wires / Alarms)</option>
+                        <option value="First-Aid Supplies">First-Aid Supplies (Dispensary kit shortage)</option>
+                        <option value="General Maintenance">General Maintenance</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="complaint-description">Description of Issue <span class="required">*</span></label>
+                    <textarea id="complaint-description" rows="3" placeholder="Please describe the issue clearly (e.g., Water cooler on 2nd floor Block B smells foul)..." required minlength="8"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-half">
+                        <label for="complaint-location">Location / Room Reference</label>
+                        <input type="text" id="complaint-location" placeholder="e.g., Block B, Room 204">
+                    </div>
+                    <div class="form-group col-half">
+                        <label for="complaint-student-name">Student Name (Optional)</label>
+                        <input type="text" id="complaint-student-name" placeholder="e.g., Rahul Sharma">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="complaint-student-contact">Contact Number (Optional)</label>
+                    <input type="tel" id="complaint-student-contact" placeholder="e.g., +91 98765 43210">
+                </div>
+
+                <div class="modal-error-box" id="complaint-error-box" style="display: none;"></div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="cancel-report-btn">Cancel</button>
+                    <button type="submit" class="btn-primary" id="submit-complaint-btn">
+                        <span>Submit Official Complaint</span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Success Confirmation Screen -->
+            <div id="complaint-success-screen" class="complaint-success-card" style="display: none;">
+                <div class="success-icon-badge">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#23865B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h4>Complaint Successfully Registered!</h4>
+                <p>Your issue has been logged in the hostel management database.</p>
+                <div class="ticket-pin-box">
+                    <div class="ticket-item">
+                        <span class="ticket-label">Complaint ID</span>
+                        <strong class="ticket-code" id="success-complaint-id">HC-2026-XXXX</strong>
+                    </div>
+                    <div class="ticket-item">
+                        <span class="ticket-label">Tracking PIN</span>
+                        <strong class="ticket-pin" id="success-tracking-pin">1234</strong>
+                    </div>
+                </div>
+                <p class="pin-hint">Please save this Complaint ID and PIN to track status and read administrator notes.</p>
+                <div class="modal-footer center-footer">
+                    <button class="btn-primary" id="finish-report-btn">Done</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL 2: Track Complaint Modal -->
+    <div class="modal-backdrop" id="track-modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <div class="modal-title-icon icon-teal">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="modal-title">Track Complaint Status</h3>
+                        <p class="modal-subtitle">Enter your unique Complaint ID and private tracking PIN.</p>
+                    </div>
+                </div>
+                <button class="modal-close-btn" id="close-track-modal-btn" aria-label="Close Modal">&times;</button>
+            </div>
+            
+            <form id="track-form" class="modal-form">
+                <div class="form-row">
+                    <div class="form-group col-half">
+                        <label for="track-complaint-id">Complaint ID <span class="required">*</span></label>
+                        <input type="text" id="track-complaint-id" placeholder="e.g., HC-2026-101" required>
+                    </div>
+                    <div class="form-group col-half">
+                        <label for="track-pin">Tracking PIN <span class="required">*</span></label>
+                        <input type="password" id="track-pin" placeholder="4-digit PIN" maxlength="6" required>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="cancel-track-btn">Cancel</button>
+                    <button type="submit" class="btn-primary" id="search-track-btn">Look Up Status</button>
+                </div>
+            </form>
+
+            <div class="modal-error-box" id="track-error-box" style="display: none;"></div>
+
+            <!-- Tracking Details Result Box -->
+            <div id="track-result-card" class="track-result-card" style="display: none;">
+                <div class="track-header-row">
+                    <div>
+                        <span class="track-id-badge" id="res-complaint-id">HC-2026-101</span>
+                        <h4 class="track-category-title" id="res-category">Drinking Water</h4>
+                    </div>
+                    <div class="status-pill" id="res-status-pill">Submitted</div>
+                </div>
+                <div class="track-details-grid">
+                    <div class="track-detail-item">
+                        <span class="detail-label">Location:</span>
+                        <span class="detail-val" id="res-location">Block A, Floor 2</span>
+                    </div>
+                    <div class="track-detail-item">
+                        <span class="detail-label">Submitted On:</span>
+                        <span class="detail-val" id="res-date">2026-11-01</span>
+                    </div>
+                </div>
+                <div class="track-desc-box">
+                    <span class="detail-label">Description:</span>
+                    <p id="res-description"></p>
+                </div>
+                <div class="admin-notes-box">
+                    <span class="detail-label">Administrator Response:</span>
+                    <p id="res-admin-notes">Awaiting administration review.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL 3: Health & Safety Guide Modal -->
+    <div class="modal-backdrop" id="guide-modal" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <div class="modal-title-icon icon-teal">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="modal-title">Health & Safety Protocols Guide</h3>
+                        <p class="modal-subtitle">Verified knowledge base for campus well-being, sanitation, and first aid.</p>
+                    </div>
+                </div>
+                <button class="modal-close-btn" id="close-guide-modal-btn" aria-label="Close Modal">&times;</button>
+            </div>
+            
+            <div class="guide-search-bar">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="guide-search-input" placeholder="Search guide by keyword (e.g. burn, water, fever, sprain)...">
+            </div>
+
+            <div class="guide-categories-tabs" id="guide-category-tabs">
+                <button class="tab-btn active" data-cat="all">All Topics</button>
+                <button class="tab-btn" data-cat="Drinking Water Safety">Drinking Water</button>
+                <button class="tab-btn" data-cat="Food Hygiene">Food Hygiene</button>
+                <button class="tab-btn" data-cat="Common Symptoms">Symptoms</button>
+                <button class="tab-btn" data-cat="First Aid">First Aid</button>
+                <button class="tab-btn" data-cat="Electrical & Fire Safety">Fire & Electrical</button>
+                <button class="tab-btn" data-cat="Emergency Response">Emergency</button>
+            </div>
+
+            <div class="guide-articles-list" id="guide-articles-list">
+                <!-- Dynamically loaded from /api/guide -->
+                <p class="table-loading-cell">Loading verified guides...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: Admin Dashboard Modal -->
+    <div class="modal-backdrop" id="admin-modal" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <div class="modal-title-icon icon-purple">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="modal-title">Hostel Administration Portal</h3>
+                        <p class="modal-subtitle">Authorized Warden & Facility Management Control</p>
+                    </div>
+                </div>
+                <button class="modal-close-btn" id="close-admin-modal-btn" aria-label="Close Modal">&times;</button>
+            </div>
+            
+            <!-- Admin Login View -->
+            <div id="admin-login-view" class="admin-login-card">
+                <div class="admin-login-header">
+                    <h4>Administrator Sign In</h4>
+                    <p>Enter warden credentials to manage complaint records and assign technicians.</p>
+                </div>
+                <form id="admin-login-form" class="modal-form">
+                    <div class="form-group">
+                        <label for="admin-user-input">Username</label>
+                        <input type="text" id="admin-user-input" value="admin" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-pass-input">Password</label>
+                        <input type="password" id="admin-pass-input" value="HostelCare@2026" required>
+                        <small class="form-hint">Default academic credentials pre-filled for review.</small>
+                    </div>
+                    <div class="modal-error-box" id="admin-login-error" style="display: none;"></div>
+                    <button type="submit" class="btn-primary" id="admin-login-btn">Authenticate & Access Portal</button>
+                </form>
+            </div>
+
+            <!-- Authenticated Admin Control Table View -->
+            <div id="admin-control-view" class="admin-control-view" style="display: none;">
+                
+                <div class="admin-toolbar">
+                    <div class="admin-filters-row">
+                        <div class="filter-item">
+                            <label for="admin-filter-category">Category:</label>
+                            <select id="admin-filter-category">
+                                <option value="all">All Categories</option>
+                                <option value="Drinking Water">Drinking Water</option>
+                                <option value="Food Hygiene">Food Hygiene</option>
+                                <option value="Washrooms & Sanitation">Washrooms & Sanitation</option>
+                                <option value="Electrical & Fire Safety">Electrical & Fire Safety</option>
+                                <option value="General Maintenance">General Maintenance</option>
+                            </select>
+                        </div>
+                        <div class="filter-item">
+                            <label for="admin-filter-status">Status:</label>
+                            <select id="admin-filter-status">
+                                <option value="all">All Statuses</option>
+                                <option value="Submitted">Submitted</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Resolved">Resolved</option>
+                            </select>
+                        </div>
+                        <div class="filter-item flex-grow">
+                            <label for="admin-search-input">Search:</label>
+                            <input type="text" id="admin-search-input" placeholder="Search ID, student, or description...">
+                        </div>
+                        <button class="btn-secondary-sm" id="admin-refresh-btn">Refresh</button>
+                        <button class="btn-secondary-sm btn-logout" id="admin-logout-btn">Sign Out</button>
+                    </div>
+                </div>
+
+                <div class="admin-table-container">
+                    <table class="complaints-table admin-table" id="admin-complaints-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Category</th>
+                                <th>Description & Location</th>
+                                <th>Student</th>
+                                <th>Status</th>
+                                <th>Action / Update</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-table-body">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Main JavaScript Application Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
