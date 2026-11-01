@@ -1,0 +1,187 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "hi", "hello", "hey", "good morning", "good evening", "good afternoon",
+        "greetings", "hello hostelcare", "is anyone there", "hey assistant",
+        "hi doc", "start conversation", "hello doctor"
+      ],
+      "responses": [
+        "Hello! I am your HostelCare Virtual Health & Safety Assistant. How can I help you today? You can describe your symptoms, ask a safety question, or report a hostel facility issue."
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "bye", "goodbye", "see you", "thank you bye", "thanks for the help",
+        "that is all thank you", "good night", "take care", "exit"
+      ],
+      "responses": [
+        "Take care! Remember to stay hydrated, eat well, and reach out immediately if your symptoms worsen or in an emergency."
+      ]
+    },
+    {
+      "tag": "medical_emergency",
+      "patterns": [
+        "chest pain", "cannot breathe", "severe difficulty breathing", "unconscious person",
+        "someone collapsed", "heavy bleeding", "profuse bleeding from head", "deep cut bleeding heavily",
+        "seizure", "convulsions in room", "sudden paralysis", "stroke symptoms", "anaphylaxis",
+        "swallowed poison", "chemical in eye", "extreme unbearable pain", "emergency help needed now",
+        "severe asthma attack", "choking can't breathe"
+      ],
+      "responses": [
+        "⚠️ CRITICAL MEDICAL ALERT: This sounds like a potential medical emergency! Please call Ambulance immediately at 108 or alert someone nearby. Do not stay alone. Local transport: Auto (+91 6379878266), Cab (+91 82488 64404)."
+      ]
+    },
+    {
+      "tag": "emergency_contacts",
+      "patterns": [
+        "emergency contact numbers", "who do i call for emergency", "ambulance phone number",
+        "auto driver number", "local auto contact", "cab number", "hospital transport number",
+        "give me emergency numbers", "taxi for hospital", "transportation contacts",
+        "contact details for auto", "call taxi", "how to contact ambulance", "driver phone numbers",
+        "warden emergency phone", "who to call right now", "call cab", "call 108"
+      ],
+      "responses": [
+        "Here are the emergency transport contacts:\n• Ambulance (Medical Emergency): 108\n• Local Auto: +91 6379878266\n• City Cab: +91 82488 64404\nYou can tap the call buttons on the dashboard directly."
+      ]
+    },
+    {
+      "tag": "hospital_info",
+      "patterns": [
+        "nearest hospital", "where is the campus clinic", "health center location",
+        "campus dispensary timings", "is doctor available on campus", "nearest medical store",
+        "pharmacy near hostel", "where to get medicines", "doctor clinic in college",
+        "dispensary open time", "campus pharmacy", "hospital distance from hostel"
+      ],
+      "responses": [
+        "The Campus Health Center / Dispensary is located near Block B and is open Monday-Saturday from 8:00 AM to 8:00 PM (Emergency duty 24/7). For secondary care, the City Government Hospital is 3.5 km away. Reach out to the warden or call Cab (+91 82488 64404) for transport."
+      ]
+    },
+    {
+      "tag": "symptom_information",
+      "patterns": [
+        "i have a fever", "high temperature and chills", "running high fever",
+        "severe headache", "migraine on one side of head", "headache since morning",
+        "stomach ache", "my tummy hurts", "abdominal cramps and pain", "nausea and vomiting",
+        "feeling like throwing up", "loose motions and diarrhea", "sore throat and pain swallowing",
+        "cough and cold", "runny nose and sneezing", "body ache and fatigue", "dizziness when standing up",
+        "feeling very weak and dehydrated", "head is aching badly", "bad stomach ache",
+        "throat infection and pain", "sneezing continuously"
+      ],
+      "responses": [
+        "I understand you are feeling unwell. For symptoms like fever, headache, or stomach upset, please rest in a well-ventilated room, stay well hydrated (ORS or warm water), and monitor your temperature. Please visit the Campus Health Dispensary for proper evaluation if symptoms persist over 24 hours."
+      ]
+    },
+    {
+      "tag": "first_aid",
+      "patterns": [
+        "first aid for minor burns", "burn on hand from hot kettle", "sprained ankle in sports",
+        "twisted ankle swelling", "cut finger with bleeding", "nosebleed how to stop",
+        "heat exhaustion first aid", "insect bite swelling", "how to clean a wound",
+        "where is first aid kit", "first aid kit contents", "blood coming from nose",
+        "scald from hot water", "first aid steps"
+      ],
+      "responses": [
+        "First Aid Guidance:\n• Minor Burn: Run cool tap water over the area for 10-15 minutes. Do not apply ice or butter.\n• Sprain: Follow R.I.C.E (Rest, Ice for 15-20 min, Compression, Elevation).\n• Bleeding cut: Apply firm direct pressure with a clean cloth.\n• Nosebleed: Lean forward slightly and pinch soft part of nose for 10 minutes.\nFirst aid kits are maintained with the Hostel Warden and floor security desks."
+      ]
+    },
+    {
+      "tag": "water_quality_complaint",
+      "patterns": [
+        "drinking water smells foul", "water cooler water is yellowish", "dispenser water is muddy",
+        "water filter filter not working", "water dispenser broken on 2nd floor",
+        "bad taste in drinking water", "contamination in water supply", "water cooler leaking",
+        "no drinking water available", "tap water brown color", "dirty drinking water",
+        "ro purifier not cooling", "drinking water not clean"
+      ],
+      "responses": [
+        "Drinking water safety is critical for student health. Please do not consume discolored or foul-smelling water. Please file an official report using the 'Report an Issue' tab under 'Drinking Water' category so the maintenance team can inspect and replace filters."
+      ]
+    },
+    {
+      "tag": "food_safety_complaint",
+      "patterns": [
+        "mess food quality is bad", "found insect in mess food", "undercooked chicken in mess",
+        "stale smelling food in hostel mess", "food poisoning from dinner", "hygiene issue in dining hall",
+        "mess utensils are greasy and unwashed", "uncooked rice served", "hair found in mess dal",
+        "spoiled food in mess", "mess food causes stomach upset", "unclean plates in cafeteria",
+        "fly found in mess food"
+      ],
+      "responses": [
+        "Food safety issues must be addressed immediately. Please submit a complaint in the 'Report an Issue' section under 'Food Hygiene' with your hostel block and mess session details. If you are experiencing food poisoning symptoms (vomiting, cramps), visit the health center immediately."
+      ]
+    },
+    {
+      "tag": "sanitation_complaint",
+      "patterns": [
+        "washroom is unhygienic", "toilet flush not working", "bathroom clogged and overflowing",
+        "waste bins overflowing in corridor", "garbage not cleared for 2 days", "bad odor from washroom",
+        "drainage blocked on floor", "pests and cockroaches in bathroom", "dirty floor in hostel wing",
+        "washroom smells terrible", "dirty toilet seats", "no water in washroom tap"
+      ],
+      "responses": [
+        "Sanitation is essential to prevent contagious infections. Please log this issue under the 'Washrooms & Sanitation' or 'Waste Disposal' category in 'Report an Issue' mentioning your floor/room number for prompt cleaning."
+      ]
+    },
+    {
+      "tag": "electrical_fire_safety",
+      "patterns": [
+        "sparking switchboard in room", "loose electric wire in hallway", "burning smell from plug point",
+        "short circuit risk", "fire extinguisher empty", "fire exit door locked", "smoke detector beeping",
+        "geyser short circuit", "electrical shock from water tap", "power socket burnt",
+        "exposed wire sparking", "fire alarm ringing in block"
+      ],
+      "responses": [
+        "⚠️ SAFETY HAZARD: Do not touch damaged sockets or sparking appliances! Switch off the main room trip if safe to do so. Immediately inform the hostel security desk and submit an urgent complaint under 'Electrical & Fire Safety'."
+      ]
+    },
+    {
+      "tag": "complaint_status",
+      "patterns": [
+        "how to check complaint status", "track my complaint", "status of complaint HC-1002",
+        "where is my reported issue", "complaint tracking pin", "has warden checked my issue",
+        "check report status", "my complaint status", "track ticket", "view my reported complaint"
+      ],
+      "responses": [
+        "You can track any complaint instantly in the 'My Complaints' section by entering your Complaint ID (e.g., HC-XXXXXX). You will see real-time status updates: Submitted, In Progress, or Resolved, along with administrator notes."
+      ]
+    },
+    {
+      "tag": "general_hostel_safety",
+      "patterns": [
+        "hostel safety rules", "curfew timings", "security guard contact", "is hostel safe at night",
+        "emergency exit location", "warden office room", "anti ragging helpline",
+        "rules for night leave", "safety guidelines in hostel", "hostel gate closing time",
+        "security guard number", "who is the hostel warden"
+      ],
+      "responses": [
+        "Hostel Safety Guidelines:\n• Curfew / in-time is 9:30 PM (verify with your block rules).\n• Security control desk operates 24/7 at the main hostel gate.\n• Emergency staircases must remain clear at all times.\n• Anti-Ragging & Student Safety committee helpline is available 24/7 through warden office."
+      ]
+    },
+    {
+      "tag": "general_health",
+      "patterns": [
+        "how to avoid falling sick in hostel", "healthy habits for students",
+        "how much water to drink daily", "sleep tips for exams", "avoid dehydration in summer",
+        "diet advice for hostel students", "preventing infections in shared rooms",
+        "wellness tips for hostel life", "how to stay fit and healthy"
+      ],
+      "responses": [
+        "Key Health Habits for Hostel Living:\n1. Drink at least 2.5-3 liters of clean, filtered water daily.\n2. Wash hands thoroughly with soap before mess meals.\n3. Avoid sharing personal items like towels, water bottles, and pillows.\n4. Keep your room ventilated and sanitize common touchpoints."
+      ]
+    },
+    {
+      "tag": "unknown",
+      "patterns": [
+        "tell me a joke", "what is the capital of france", "write me python code",
+        "play some music", "who won the cricket match", "movie recommendation",
+        "sing a song for me", "tell me stories", "what is your favorite movie"
+      ],
+      "responses": [
+        "I am the HostelCare AI Assistant, specialized in hostel health, safety protocols, first-aid, emergency response, and facility complaints. For non-health queries, please ask about symptoms, health tips, emergency contacts, or hostel issues."
+      ]
+    }
+  ]
+}

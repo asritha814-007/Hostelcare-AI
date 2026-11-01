@@ -1,0 +1,157 @@
+{
+  "faqs": [
+    {
+      "id": "faq_water_01",
+      "category": "Drinking Water Safety",
+      "question": "How can I ensure the drinking water in the hostel is safe to drink?",
+      "keywords": ["drinking water", "safe water", "filter", "ro water", "boil water", "contamination"],
+      "answer": "Always fill water from designated RO filtration units that have recent maintenance tags. If the water appears cloudy, has an unusual smell, or metallic taste, do not drink it. Use an insulated stainless-steel bottle, wash it daily with hot water and dish soap, and report any dispenser issues immediately.",
+      "severity": "medium",
+      "action": "report_water"
+    },
+    {
+      "id": "faq_water_02",
+      "category": "Drinking Water Safety",
+      "question": "What should I do if the hostel water cooler or tap is producing discolored or dirty water?",
+      "keywords": ["dirty water", "yellow water", "brown tap water", "water cooler dirty", "smelly water", "muddy water"],
+      "answer": "Do not consume or brush teeth with discolored water. Immediately notify your wing floor representative and submit a complaint under 'Drinking Water' on HostelCare AI. Use bottled or purified water from alternate hostel blocks until filter servicing is confirmed.",
+      "severity": "high",
+      "action": "report_water"
+    },
+    {
+      "id": "faq_food_01",
+      "category": "Food Hygiene",
+      "question": "How to prevent food poisoning and digestive issues from hostel mess food?",
+      "keywords": ["food poisoning", "mess food", "stomach infection", "digestion", "mess hygiene"],
+      "answer": "Eat freshly cooked hot food during scheduled meal times rather than leaving food sitting for hours. Wash hands with soap before eating. Avoid raw salads or unpeeled fruits if they look exposed or unwashed. If you suspect food poisoning (sudden vomiting, stomach cramps, diarrhea), hydrate with ORS and visit the campus health center.",
+      "severity": "medium",
+      "action": "report_food"
+    },
+    {
+      "id": "faq_food_02",
+      "category": "Food Hygiene",
+      "question": "What should I do if I find foreign particles or insects in the mess food?",
+      "keywords": ["insect in food", "stone in rice", "undercooked food", "stale food", "mess complaint"],
+      "answer": "Immediately take a photo of the contaminated plate, show it to the mess supervisor on duty, and report it through the HostelCare AI 'Report an Issue' portal under 'Food Hygiene'. Do not continue eating that batch.",
+      "severity": "high",
+      "action": "report_food"
+    },
+    {
+      "id": "faq_symptom_fever",
+      "category": "Common Symptoms",
+      "question": "What is the recommended protocol if a student has a fever in the hostel?",
+      "keywords": ["fever", "high temperature", "chills", "paracetamol", "body heat", "feeling hot"],
+      "answer": "Check your temperature using a digital thermometer. For a mild fever (< 100.4°F / 38°C): rest, drink plenty of fluids (water, electrolytes, warm soup), wear light clothing, and apply a cool damp cloth to your forehead. If fever exceeds 101°F or lasts >24 hours, visit the Campus Dispensary for blood tests to rule out viral infections or dengue.",
+      "severity": "medium",
+      "action": "visit_clinic"
+    },
+    {
+      "id": "faq_symptom_headache",
+      "category": "Common Symptoms",
+      "question": "How to relieve a tension headache or migraine in a hostel room?",
+      "keywords": ["headache", "migraine", "head pain", "head throbbing", "screen fatigue"],
+      "answer": "Rest in a dark, quiet, well-ventilated room. Drink at least 500ml of water, as mild dehydration is the leading trigger for student headaches. Take a break from digital screens. Apply a cold or warm compress to forehead or neck. If accompanied by sudden severe pain, stiff neck, or vomiting, seek immediate medical attention.",
+      "severity": "low",
+      "action": "rest"
+    },
+    {
+      "id": "faq_symptom_stomach",
+      "category": "Common Symptoms",
+      "question": "What should I do for acute stomach ache, abdominal cramps, or loose motions?",
+      "keywords": ["stomach ache", "loose motions", "diarrhea", "vomiting", "tummy pain", "abdominal pain"],
+      "answer": "Do not skip hydration. Mix one packet of ORS (Oral Rehydration Salts) into 1 liter of safe drinking water and sip continuously. Stick to the BRAT diet (Bananas, Rice, Applesauce, Toast) or light curd rice. Avoid greasy, spicy, or dairy foods. If vomiting prevents keeping liquids down for >8 hours, see a doctor immediately.",
+      "severity": "medium",
+      "action": "visit_clinic"
+    },
+    {
+      "id": "faq_symptom_cold",
+      "category": "Common Symptoms",
+      "question": "How to treat a common cold, sore throat, and cough in a shared hostel room?",
+      "keywords": ["cold", "cough", "sore throat", "sneezing", "runny nose", "congestion"],
+      "answer": "Gargle with warm salt water 3 times daily to relieve throat soreness. Steam inhalation helps clear nasal congestion. Wear a mask when interacting with roommates to prevent spreading viral droplets. Stay warm and get adequate sleep. Contact dispensary if phlegm turns green/brown or breathing feels labored.",
+      "severity": "low",
+      "action": "rest"
+    },
+    {
+      "id": "faq_firstaid_burn",
+      "category": "First Aid",
+      "question": "What is the proper first-aid treatment for a minor heat burn or scald?",
+      "keywords": ["burn", "scald", "hot water burn", "kettle burn", "blister", "iron burn"],
+      "answer": "Immediately hold the burned area under cool running tap water for 10-15 minutes. Never apply ice, toothpaste, butter, or oil to a burn. Once cooled, cover loosely with a sterile dry bandage. Do not burst any blisters that form. Seek professional care for burns larger than 3 inches or on the face/hands.",
+      "severity": "medium",
+      "action": "first_aid"
+    },
+    {
+      "id": "faq_firstaid_sprain",
+      "category": "First Aid",
+      "question": "How to manage a sprained ankle, wrist, or muscle strain?",
+      "keywords": ["sprain", "twisted ankle", "swelling", "strain", "sports injury", "joint pain"],
+      "answer": "Follow the R.I.C.E. protocol: Rest (avoid putting weight on the limb), Ice (apply ice pack wrapped in a cloth for 15-20 min every 2-3 hours), Compress (wrap with an elastic crepe bandage snugly, not too tight), Elevate (keep injured limb propped above heart level). If unable to bear weight at all, get an X-ray to check for fractures.",
+      "severity": "low",
+      "action": "first_aid"
+    },
+    {
+      "id": "faq_firstaid_cut",
+      "category": "First Aid",
+      "question": "What is the first-aid protocol for a cut or bleeding wound?",
+      "keywords": ["cut", "bleeding", "wound", "blood", "scratch", "glass cut"],
+      "answer": "1. Wash hands and apply direct pressure over the wound using a clean cloth or sterile gauze for 5 minutes. 2. Once bleeding stops, clean gently with mild soap and clean water. 3. Apply antiseptic ointment (e.g., Betadine) and cover with a sterile adhesive bandage. If bleeding does not stop after 10 minutes of continuous pressure or the cut is deep/gaping, visit the clinic for stitches and a tetanus shot.",
+      "severity": "medium",
+      "action": "first_aid"
+    },
+    {
+      "id": "faq_firstaid_nosebleed",
+      "category": "First Aid",
+      "question": "How to stop a sudden nosebleed?",
+      "keywords": ["nosebleed", "bleeding nose", "epistaxis", "blood from nose"],
+      "answer": "Sit upright and lean forward slightly (do NOT tilt your head backwards, as blood may flow down your throat). Firmly pinch the soft part of the nose just below the bony bridge for a full 10 minutes without releasing. Breathe through your mouth. Apply an ice pack across the bridge of your nose.",
+      "severity": "low",
+      "action": "first_aid"
+    },
+    {
+      "id": "faq_sanitation_01",
+      "category": "Sanitation & Hygiene",
+      "question": "Why is washroom cleanliness important and how to report sanitation failures?",
+      "keywords": ["washroom sanitation", "dirty toilet", "washroom infection", "urinary infection", "hygiene"],
+      "answer": "Shared hostel washrooms are high-risk vectors for gastrointestinal and skin infections. Always wear bathroom slippers, flush thoroughly after use, and wash hands with soap. If washrooms are unhygienic or plumbing fails, log a complaint in HostelCare AI under 'Washrooms & Sanitation' for expedited housekeeping.",
+      "severity": "medium",
+      "action": "report_sanitation"
+    },
+    {
+      "id": "faq_electrical_01",
+      "category": "Electrical & Fire Safety",
+      "question": "What electrical hazards should students look out for in hostel rooms?",
+      "keywords": ["electrical hazard", "short circuit", "sparking", "overloaded socket", "wire", "shock"],
+      "answer": "Never overload multi-plug extension cords or daisy-chain power strips. Avoid using high-wattage unauthorized immersion coils or heaters. If a socket is loose, sparking, or gives off a burning plastic smell, do not use it. Turn off the room switchboard and submit an urgent complaint under 'Electrical & Fire Safety'.",
+      "severity": "high",
+      "action": "report_electrical"
+    },
+    {
+      "id": "faq_fire_01",
+      "category": "Electrical & Fire Safety",
+      "question": "What is the fire evacuation procedure for the hostel?",
+      "keywords": ["fire", "fire evacuation", "fire alarm", "smoke", "fire exit", "fire extinguisher"],
+      "answer": "If you detect smoke or fire: 1. Pull the nearest fire alarm manual station. 2. Evacuate immediately via designated fire stairwells — NEVER use elevators. 3. Stay low if there is smoke. 4. Assemble at the primary Hostel Quadrangle Assembly Point. 5. Notify campus security and call Ambulance/Fire services.",
+      "severity": "high",
+      "action": "emergency"
+    },
+    {
+      "id": "faq_emergency_contacts",
+      "category": "Emergency Response",
+      "question": "What are the exact emergency transportation and medical contacts for the hostel?",
+      "keywords": ["emergency contacts", "ambulance", "auto phone", "cab phone", "hospital transport"],
+      "answer": "Immediate emergency contacts:\n• Ambulance (Medical Emergency): 108\n• Local Auto: +91 6379878266\n• City Cab: +91 82488 64404\nThese contacts are available from the emergency cards on your dashboard with direct click-to-call functionality.",
+      "severity": "high",
+      "action": "emergency"
+    },
+    {
+      "id": "faq_when_doctor",
+      "category": "Emergency Response",
+      "question": "When must a student seek immediate emergency medical care instead of self-care?",
+      "keywords": ["emergency care", "when to see doctor", "serious symptoms", "red flags", "danger signs"],
+      "answer": "Seek immediate emergency care (Call 108 / Visit Emergency Room) if experiencing: Chest pain or pressure, shortness of breath, sudden severe weakness or numbness, fainting / loss of consciousness, uncontrolled bleeding, severe allergic reactions (swelling of lips/tongue/throat), persistent high fever with stiff neck, or poisoning.",
+      "severity": "high",
+      "action": "emergency"
+    }
+  ]
+}
