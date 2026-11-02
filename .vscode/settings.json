@@ -1,0 +1,6 @@
+{
+  "python.defaultInterpreterPath": "C:\\Users\\asrit\\AppData\\Local\\Python\\bin\\python.exe",
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}"
+  ]
+}
