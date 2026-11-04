@@ -64,8 +64,11 @@ class IntentClassifier:
         ])
 
         self.pipeline.fit(texts, labels)
-        os.makedirs(MODEL_DIR, exist_ok=True)
-        joblib.dump(self.pipeline, MODEL_PATH)
+        try:
+            os.makedirs(MODEL_DIR, exist_ok=True)
+            joblib.dump(self.pipeline, MODEL_PATH)
+        except Exception as e:
+            print(f"[IntentClassifier] Notice: Read-only filesystem detected, model cached in memory only ({e}).")
         print(f"[IntentClassifier] Trained on {len(texts)} samples across {len(set(labels))} classes.")
         return len(texts), len(set(labels))
 

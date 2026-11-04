@@ -82,7 +82,7 @@ def list_admin_complaints():
         "stats": stats
     })
 
-@admin_bp.route('/api/admin/complaints/<complaint_id>/status', methods=['PATCH'])
+@admin_bp.route('/api/admin/complaints/<complaint_id>/status', methods=['PATCH', 'POST'])
 @require_admin
 def update_status(complaint_id):
     data = request.get_json() or {}

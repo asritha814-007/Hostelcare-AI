@@ -5,10 +5,26 @@ import secrets
 import datetime
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(CURRENT_DIR, 'hostelcare.db')
+
+def get_db_path() -> str:
+    # If explicit path provided in environment
+    if os.environ.get('DATABASE_PATH'):
+        return os.environ['DATABASE_PATH']
+    # If running on Vercel or AWS Lambda serverless
+    if os.environ.get('VERCEL') or os.environ.get('AWS_LAMBDA_FUNCTION_NAME'):
+        tmp_db = '/tmp/hostelcare.db'
+        bundled_db = os.path.join(CURRENT_DIR, 'hostelcare.db')
+        if not os.path.exists(tmp_db) and os.path.exists(bundled_db):
+            import shutil
+            try:
+                shutil.copyfile(bundled_db, tmp_db)
+            except Exception as e:
+                print(f"[Database] Could not copy initial db to /tmp: {e}")
+        return tmp_db
+    return os.path.join(CURRENT_DIR, 'hostelcare.db')
 
 def get_db_connection():
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(get_db_path())
     conn.row_factory = sqlite3.Row
     return conn
 
