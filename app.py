@@ -1,3 +1,4 @@
+
 import os
 import sys
 
@@ -17,7 +18,6 @@ from routes import chat_bp, complaint_bp, admin_bp, stats_bp
 # =========================================================================
 app = Flask(__name__, static_folder=CURRENT_DIR, static_url_path='')
 app.config.from_object(Config)
-
 # Enable CORS for cross-origin access and flexible deployment
 CORS(app)
 

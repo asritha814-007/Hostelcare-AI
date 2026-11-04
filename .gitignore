@@ -4,3 +4,9 @@ __pycache__/
 .pytest_cache/
 .vercel/
 .env
+.venv/
+venv/
+
+hostelcare.db
+.env.*
+!.env.example
