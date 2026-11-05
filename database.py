@@ -1,4 +1,3 @@
-
 import os
 import sqlite3
 import hashlib
@@ -120,8 +119,6 @@ def init_db():
                     created_at
                 ))
 
-        # No fictional complaint records are inserted.
-
         conn.commit()
 
     finally:
@@ -130,13 +127,11 @@ def init_db():
 
 def generate_complaint_id() -> str:
     """Generate a unique complaint ID."""
-
     return f"HC-2026-{secrets.randbelow(9000) + 1000}"
 
 
 def generate_tracking_pin() -> str:
     """Generate a four-digit tracking PIN."""
-
     return f"{secrets.randbelow(9000) + 1000}"
 
 
@@ -208,7 +203,7 @@ def create_complaint(
 
 def get_complaint_by_id(
     complaint_id: str,
-    pin: str = None
+    pin: str | None = None
 ) -> dict | None:
 
     conn = get_db_connection()
@@ -234,9 +229,9 @@ def get_complaint_by_id(
 
 
 def get_complaints(
-    category: str = None,
-    status: str = None,
-    search: str = None,
+    category: str | None = None,
+    status: str | None = None,
+    search: str | None = None,
     limit: int = 50,
     offset: int = 0
 ) -> list[dict]:
@@ -247,7 +242,7 @@ def get_complaints(
         cursor = conn.cursor()
 
         query = "SELECT * FROM complaints WHERE 1=1"
-        params = []
+        params: list[str | int] = []
 
         if category and category.lower() != "all":
             query += " AND category = ?"
@@ -301,7 +296,7 @@ def get_dashboard_complaints(limit: int = 5) -> list[dict]:
 def update_complaint_status(
     complaint_id: str,
     new_status: str,
-    admin_notes: str = None
+    admin_notes: str | None = None
 ) -> bool:
 
     conn = get_db_connection()
@@ -427,4 +422,3 @@ def verify_admin(username: str, password: str) -> bool:
 
     finally:
         conn.close()
-
